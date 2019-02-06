@@ -2,7 +2,7 @@ local Moan = require("libs/Moan")
 local Dialogue = require("libs/Dialogue")
 
 function love.load()
-  love.graphics.setBackgroundColor(144, 238, 144)
+  love.graphics.setBackgroundColor(154, 205, 237)
   Moan.font = love.graphics.newFont("assets/Pixel UniCode.ttf", 32)
   Moan.typeSound = love.audio.newSource("assets/typeSound.wav", "static")
   avatar = love.graphics.newImage("assets/Theo.png")
