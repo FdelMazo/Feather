@@ -68,7 +68,7 @@ function Moan.new(title, messages, config)
     messages   = messages,
     x          = config.x,
     y          = config.y,
-    image      = config.image ~= nil and config.image,
+    image      = config.image ~= nil and config.image or love.graphics.newImage(PATH .. "moandefault.png"),
     options    = config.options,
     onstart    = config.onstart or function() end,
     oncomplete = config.oncomplete or function() end
