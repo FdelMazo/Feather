@@ -1,37 +1,49 @@
 local theodialogue = {}
 
-Gamestate = require("libs/gamestate")
-
 local Moan = require("libs/Moan")
 local feather = require("feather")
+
 local avatar = love.graphics.newImage("assets/Theo.png")
-
-
-current_audio = nil
+local alphadown, alphaup = 255, 0
+local fadeout = false
+local show_feather = false
+local current_audio = nil
 
 function theodialogue:enter()
-  love.graphics.setBackgroundColor( 28, 78, 104 )
   Moan.font = love.graphics.newFont("assets/Pixel UniCode.ttf", 32)
-  
   Moan.setSpeed('medium')
   
-  Moan.new(setText("You're having a panic attack.", 1))
-  Moan.new(setText("Stay with me here.", 2))
-  Moan.new(setText("My grandpa taught me a trick for this.", 3))
-  Moan.new(setText("Close your eyes.", 4))
-  Moan.new(setText("Picture a feather floating in front of you.", 5))
-  Moan.new(setText("See it?", 6))
-  Moan.new(setText("Okay.", 7))
-  Moan.new(setText("Your breathing keeps that feather floating.", 8))
-  Moan.new(setText("Just breathe slow and steady, in and out.", 9, {onstart=function() playDialogue(9) end, image=avatar, oncomplete=function() Gamestate.switch(feather) end}))
-  
+  Moan.new( {"Theo", {0,191,255}}, "You're having a panic attack." , {image=avatar, onstart=function() playDialogue(1) end} )
+  Moan.new( {"Theo", {0,191,255}}, "Stay with me here." , {image=avatar, onstart=function() playDialogue(2) end} )
+  Moan.new( {"Theo", {0,191,255}}, "My grandpa taught me a trick for this." , {image=avatar, onstart=function() playDialogue(3) end} )
+  Moan.new( {"Theo", {0,191,255}}, "Close your eyes." , {onstart=function() playDialogue(4) ; fadeout = true end, image=avatar} )
+  Moan.new( {"Theo", {0,191,255}}, "Picture a feather floating in front of you." , {image=avatar, onstart=function() playDialogue(5) ; show_feather = true end} )
+  Moan.new( {"Theo", {0,191,255}}, "See it?" , {image=avatar, onstart=function() playDialogue(6) end} )
+  Moan.new( {}, "Okay." , {image=avatar, onstart=function() playDialogue(7) end} )
+  Moan.new( {}, "Your breathing keeps that feather floating.", {onstart=function() playDialogue(8) end} )
+  Moan.new( {}, "Just breathe slow and steady, in and out." , { oncomplete=function() Gamestate.switch(feather) end} )
+ 
 end
 
 function theodialogue:update(dt)
   Moan.update(dt)
+  if fadeout then 
+    alphadown = alphadown - (dt * (255 / 7))
+  end
+  
+  if show_feather then
+    alphaup = alphaup + (dt * (255 / 7))
+  end
 end
 
 function theodialogue:draw()
+  love.graphics.setColor(154, 205, 237,alphadown)
+  love.graphics.rectangle("fill", 0, 0, 10000,10000 )
+
+  love.graphics.setColor( 214,214,0,alphaup)
+  local width, height, _ = love.window.getMode( )
+  love.graphics.rectangle("fill", (width/2)-(180/2), (height*2/3)-(60/2), 180, 60 )
+
   Moan.draw()
 end
 
@@ -47,11 +59,5 @@ function playDialogue(n)
   love.audio.play(current_audio)
 end
 
-function setText(text, n, specialconfig)
-  local title = {"Theo", {0,191,255}}
-  local message = {text}
-  local config = specialconfig or {image=avatar, onstart=function() playDialogue(n) end}
-  return title, message, config
-end
 
 return theodialogue

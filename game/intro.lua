@@ -1,27 +1,28 @@
 local intro = {}
 
-Gamestate = require("libs/gamestate")
-
 local theodialogue = require("theodialogue")
 
 local font_height_separation = 90
-local font_speed_separation = 1
+local font_speed_separation = 80
+local alpha,alpha2,alpha3,alpha4,alpha5 = 0,0,0,0,0
 
 function intro:enter()
-  love.graphics.setBackgroundColor( 0,0,0 )
   love.graphics.setFont(love.graphics.newFont("assets/Pixel UniCode.ttf", 32))
-  alpha = 0
 end
 
 function intro:update(dt)
-    alpha = alpha + (dt * (255 / 3))
-    alpha2 = alpha - 100
-    alpha3 = alpha2 - 100
-    alpha4 = alpha3 - 100
+    alpha = alpha + (dt * (255 / 7))
+    alpha2 = alpha - font_speed_separation
+    alpha3 = alpha2 - font_speed_separation
+    alpha4 = alpha3 - font_speed_separation
+    alpha5 = alpha4 - font_speed_separation
 end
 
 function intro:draw()
     local height = 100
+
+    love.graphics.setColor(154, 205, 237,alpha5)
+    love.graphics.rectangle("fill", 0, 0, 10000,10000 )
 
     love.graphics.setColor(255,255,255, alpha)
     love.graphics.print("Feather", 100, height)    

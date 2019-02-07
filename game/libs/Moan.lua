@@ -68,7 +68,7 @@ function Moan.new(title, messages, config)
     messages   = messages,
     x          = config.x,
     y          = config.y,
-    image      = config.image ~= nil and config.image or love.graphics.newImage(PATH .. "moandefault.png"),
+    image      = config.image or nil,
     options    = config.options,
     onstart    = config.onstart or function() end,
     oncomplete = config.oncomplete or function() end
@@ -82,8 +82,23 @@ function Moan.new(title, messages, config)
     -- Set the first message up, after this is set up via advanceMsg()
     typePosition = 0
     Moan.currentMessage = allMessages[Moan.currentMsgIndex].messages[Moan.currentMsgKey]
-    Moan.currentTitle = allMessages[Moan.currentMsgIndex].title
-    Moan.currentImage = allMessages[Moan.currentMsgIndex].image
+    
+    if allMessages[Moan.currentMsgIndex].image then
+      Moan.currentImage = allMessages[Moan.currentMsgIndex].image
+      Moan.withImage = true
+    else
+      Moan.currentImage = love.graphics.newImage(PATH .. "moandefault.png")
+      Moan.withImage = false
+    end
+    
+    if allMessages[Moan.currentMsgIndex].title then
+      Moan.currentTitle = allMessages[Moan.currentMsgIndex].title
+      Moan.withTitle = true
+    else
+      Moan.currentTitle = "xxx"
+      Moan.withTitle = false
+    end
+
     Moan.showingOptions = false
     -- Run the first startup function
     allMessages[Moan.currentMsgIndex].onstart()
@@ -187,8 +202,22 @@ function Moan.advanceMsg()
     allMessages[Moan.currentMsgIndex].onstart()
   end
   Moan.currentMessage = allMessages[Moan.currentMsgIndex].messages[Moan.currentMsgKey] or ""
-  Moan.currentTitle = allMessages[Moan.currentMsgIndex].title or ""
-  Moan.currentImage = allMessages[Moan.currentMsgIndex].image
+  if allMessages[Moan.currentMsgIndex].image then
+    Moan.currentImage = allMessages[Moan.currentMsgIndex].image
+    Moan.withImage = true
+  else
+    Moan.currentImage = love.graphics.newImage(PATH .. "moandefault.png")
+    Moan.withImage = false
+  end
+  
+  if allMessages[Moan.currentMsgIndex].title then
+    Moan.currentTitle = allMessages[Moan.currentMsgIndex].title
+    Moan.withTitle = true
+  else
+    Moan.currentTitle = "xxx"
+    Moan.withTitle = false
+  end
+
 end
 
 function Moan.draw()
@@ -236,11 +265,12 @@ function Moan.draw()
     love.graphics.setFont(Moan.font)
 
     -- Message title
-    love.graphics.setColor(boxColour)
-    love.graphics.rectangle("fill", titleBoxX, titleBoxY, titleBoxW, titleBoxH)
-    love.graphics.setColor(titleColor)
-    love.graphics.print(Moan.currentTitle, titleX, titleY)
-
+    if Moan.withTitle then
+      love.graphics.setColor(boxColour)
+      love.graphics.rectangle("fill", titleBoxX, titleBoxY, titleBoxW, titleBoxH)
+      love.graphics.setColor(titleColor)
+      love.graphics.print(Moan.currentTitle, titleX, titleY)
+    end
     -- Main message box
     love.graphics.setColor(boxColour)
     love.graphics.rectangle("fill", boxX, boxY, boxW, boxH)
@@ -249,7 +279,7 @@ function Moan.draw()
     -- Message avatar
     love.graphics.push()
       love.graphics.scale(scale, scale)
-      love.graphics.draw(Moan.currentImage, imgX, imgY)
+      if Moan.withImage then love.graphics.draw(Moan.currentImage, imgX, imgY) end 
     love.graphics.pop()
 
     -- Message text

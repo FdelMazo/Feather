@@ -7,7 +7,8 @@ Repository set-up (you need the love.js files for deploying to the web)
 
 ```shell
 $ git clone https://github.com/FdelMazo/celeste-feather-game.git
-$ git clone https://github.com/TannerRogalsky/love.js.git lovejs
+$ git clone https://github.com/TannerRogalsky/love.js.git love.js-clean
+$ mv love.js-clean lovejs
 $ cd lovejs
 $ git submodule update --init --recursive  
 ```
