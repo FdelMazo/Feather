@@ -28,11 +28,11 @@ end
 function theodialogue:update(dt)
   Moan.update(dt)
   if fadeout then 
-    alphadown = alphadown - (dt * (255 / 7))
+    alphadown = alphadown - (dt * (255 / 4))
   end
   
   if show_feather then
-    alphaup = alphaup + (dt * (255 / 7))
+    alphaup = alphaup + (dt * (255 / 10))
   end
 end
 

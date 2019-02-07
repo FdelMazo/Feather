@@ -5,17 +5,20 @@ local theodialogue = require("theodialogue")
 local font_height_separation = 90
 local font_speed_separation = 80
 local alpha,alpha2,alpha3,alpha4,alpha5 = 0,0,0,0,0
+local switch = false
 
 function intro:enter()
   love.graphics.setFont(love.graphics.newFont("assets/Pixel UniCode.ttf", 32))
 end
 
 function intro:update(dt)
-    alpha = alpha + (dt * (255 / 7))
-    alpha2 = alpha - font_speed_separation
-    alpha3 = alpha2 - font_speed_separation
-    alpha4 = alpha3 - font_speed_separation
-    alpha5 = alpha4 - font_speed_separation
+    if not switch then 
+      alpha = alpha + (dt * (255 / 7))
+      alpha2 = alpha - font_speed_separation
+      alpha3 = alpha2 - font_speed_separation
+      alpha4 = alpha3 - font_speed_separation
+      alpha5 = alpha4 - font_speed_separation
+    end
 end
 
 function intro:draw()
@@ -45,7 +48,9 @@ end
 
 function intro:keyreleased(key)
   if key=='space' then
-    Gamestate.switch(theodialogue)
+    if switch then Gamestate.switch(theodialogue) end
+    alpha,alpha2,alpha3,alpha4,alpha5 = 255,255,255,255,255
+    switch = true    
   end
 end
 
