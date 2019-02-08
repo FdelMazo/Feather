@@ -16,6 +16,15 @@ local acceleration = -100
 function feather:enter()
   love.graphics.setColor(255,255,255,255)
   love.graphics.setBackgroundColor( 0,0,0 )
+
+  local raindrop = love.graphics.newImage("assets/raindrop.png")
+  rain_system = love.graphics.newParticleSystem(raindrop, 1000)
+	rain_system:setSizes(0.7,0.5,0.3)
+	rain_system:setParticleLifetime(2,7)
+	rain_system:setAreaSpread("uniform",PARAMS.window_width,0)
+  rain_system:setColors(255, 255, 255, 50, 255, 255, 255, 0)
+  rain_system:setPosition(PARAMS.window_width, PARAMS.window_height+20)
+	rain_system:setLinearAcceleration( -20, -50, 20, -100)
 end
 
 function feather:update(dt)
@@ -33,11 +42,18 @@ function feather:update(dt)
 		feather_y = feather_y + velocity * dt
 		velocity = velocity - acceleration * dt
   end
+
+  if love.keyboard.isDown('space') then
+    rain_system:emit(1)
+  end
+
+  rain_system:update(dt)
   
 end
 
 function feather:draw()
   love.graphics.draw(PARAMS.feather_image, feather_x, feather_y, rotation, 1, 1, PARAMS.feather_width/2, PARAMS.feather_height/2 )
+  love.graphics.draw(rain_system)
 end
 
 function oscilation_translation(dt, feather_x)
@@ -55,11 +71,12 @@ end
 
 function oscilation_rotation(dt, rotation) 
   local k = 1
-  local s = 4
+  local seconds = 4
 
   if love.keyboard.isDown('space') then
-    s = 10
+    seconds = 10
   end
+  
   if not translation_right then k = -1 end
   
   if rotation < -0.3 then
@@ -69,7 +86,7 @@ function oscilation_rotation(dt, rotation)
     translation_right = false
   end
 
-  return k*dt/s
+  return k*dt/seconds
 end
 
 return feather
