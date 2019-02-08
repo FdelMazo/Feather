@@ -7,8 +7,6 @@ local bgm = love.audio.newSource("assets/environments.mp3", "stream")
 feather = require("objects/feather")
 rain = require("objects/rain")
 
-PARAMS = require("params")
-
 intro = require("states/intro")
 theo = require("states/theo")
 breathing = require("states/breathing")
@@ -21,12 +19,6 @@ function love.load()
   love.audio.play(bgm)
   Gamestate.registerEvents()
   Gamestate.switch(intro) 
-end
-
-function love.update(dt)
-end
-
-function love.draw()
 end
 
 function love.keyreleased(key)

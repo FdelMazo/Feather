@@ -8,6 +8,8 @@ local fadeout = false
 local show_feather = false
 local current_audio = nil
 
+rotation = 0
+
 function theo:enter()
   love.graphics.setColor(255,255,255,255)
   love.graphics.setBackgroundColor( 0,0,0 )
@@ -35,6 +37,15 @@ function theo:update(dt)
   if show_feather then
     alphaup = alphaup + (dt * (255 / 10))
   end
+
+  if rotation < -0.3 then
+    go_to_right = true
+  elseif rotation > 0.35 then 
+      go_to_right = false
+  end
+  
+  rotation = rotation + feather:rotate(dt,rotation, go_to_right)
+  
 end
 
 function theo:draw()
@@ -42,7 +53,8 @@ function theo:draw()
   love.graphics.rectangle("fill", 0, 0, 10000,10000 )
 
   love.graphics.setColor( 255,255,255,alphaup)
-  feather:draw()
+  
+  feather:draw(nil,nil, rotation)
 
   Moan.draw()
 end
