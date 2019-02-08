@@ -46,7 +46,7 @@ end
 
 function intro:keyreleased(key)
   if key=='space' then
-    if shown_all_text then Gamestate.switch(theodialogue_state) end
+    if shown_all_text then Gamestate.switch(theo) end
     alpha,alpha2,alpha3,alpha4,alpha5 = 255,255,255,255,255
     shown_all_text = true    
   end

@@ -23,7 +23,7 @@ function theodialogue:enter()
   Moan.new( {"Theo", {0,191,255}}, "See it?" , {image=avatar, onstart=function() playDialogue(6) end} )
   Moan.new( {}, "Okay." , {image=avatar, onstart=function() playDialogue(7) end} )
   Moan.new( {}, "Your breathing keeps that feather floating.", {onstart=function() playDialogue(8) end} )
-  Moan.new( {}, "Just breathe slow and steady, in and out." , { oncomplete=function() Gamestate.switch(feather_state) end} )
+  Moan.new( {}, "Just breathe slow and steady, in and out." , { oncomplete=function() Gamestate.switch(breathing) end} )
 end
 
 function theodialogue:update(dt)

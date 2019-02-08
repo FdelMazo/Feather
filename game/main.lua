@@ -1,9 +1,9 @@
 Gamestate = require("libs/gamestate")
 PARAMS = require("params")
 
-intro_state = require("intro")
-theodialogue_state = require("theodialogue")
-feather_state = require("feather")
+intro = require("states/intro")
+theo = require("states/theo")
+breathing = require("states/breathing")
 
 local bgm = love.audio.newSource("assets/environments.mp3", "stream")
 
@@ -13,7 +13,7 @@ function love.load()
 
   love.audio.play(bgm)
   Gamestate.registerEvents()
-  Gamestate.switch(intro_state) 
+  Gamestate.switch(intro) 
 end
 
 function love.update(dt)
@@ -30,7 +30,7 @@ function love.keyreleased(key)
   end
   
   if key=='escape' then
-    Gamestate.switch(feather_state)
+    Gamestate.switch(breathing)
   end
 
 end
