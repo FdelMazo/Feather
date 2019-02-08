@@ -1,3 +1,5 @@
+all: web love windows
+
 web:
 	cd lovejs/release-compatibility && python2 ../emscripten/tools/file_packager.py game.data --preload  ../../game@/ --js-output=Feather.js
 	mv lovejs/release-compatibility/Feather.* ./
@@ -13,3 +15,6 @@ windows: love
 
 releases:
 	mkdir -p releases
+
+clean:
+	rm -rf releases/
