@@ -12,7 +12,7 @@ function theodialogue:enter()
   love.graphics.setColor(255,255,255,255)
   love.graphics.setBackgroundColor( 0,0,0 )
   
-  Moan.font = love.graphics.newFont("assets/Pixel UniCode.ttf", 32)
+  Moan.font = font
   Moan.setSpeed('medium')
   
   Moan.new( {"Theo", {0,191,255}}, "You're having a panic attack." , {image=avatar, onstart=function() playDialogue(1) end} )

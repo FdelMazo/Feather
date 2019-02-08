@@ -6,7 +6,7 @@ local alpha,alpha2,alpha3,alpha4,alpha5 = 0,0,0,0,0
 local shown_all_text = false
 
 function intro:enter()
-  love.graphics.setFont(love.graphics.newFont("assets/Pixel UniCode.ttf", 32))
+  love.graphics.setFont(font)
 end
 
 function intro:update(dt)

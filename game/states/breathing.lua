@@ -3,7 +3,7 @@ local feather = {}
 local feather_x = PARAMS.feather_x_initial
 local feather_y = PARAMS.feather_y_initial 
 
-local floor = PARAMS.window_height+PARAMS.feather_height/2
+local floor = window_height+PARAMS.feather_height/2
 local roof = -PARAMS.feather_height/2
 
 local translation_right = true
@@ -21,9 +21,9 @@ function feather:enter()
   rain_system = love.graphics.newParticleSystem(raindrop, 1000)
 	rain_system:setSizes(0.7,0.5,0.3)
 	rain_system:setParticleLifetime(2,7)
-	rain_system:setAreaSpread("uniform",PARAMS.window_width,0)
+	rain_system:setAreaSpread("uniform",window_width,0)
   rain_system:setColors(255, 255, 255, 50, 255, 255, 255, 0)
-  rain_system:setPosition(PARAMS.window_width, PARAMS.window_height+20)
+  rain_system:setPosition(window_width, window_height+20)
 	rain_system:setLinearAcceleration( -20, -50, 20, -100)
 end
 

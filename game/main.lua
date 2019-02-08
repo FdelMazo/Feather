@@ -1,11 +1,15 @@
 Gamestate = require("libs/gamestate")
+
+window_width, window_height = love.window.getMode()
+font = love.graphics.newFont("assets/Pixel UniCode.ttf", 32)
+local bgm = love.audio.newSource("assets/environments.mp3", "stream")
+
 PARAMS = require("params")
 
 intro = require("states/intro")
 theo = require("states/theo")
 breathing = require("states/breathing")
 
-local bgm = love.audio.newSource("assets/environments.mp3", "stream")
 
 function love.load()
   love.graphics.setColor(255,255,255,255)

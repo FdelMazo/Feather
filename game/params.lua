@@ -1,6 +1,6 @@
 local params = {}
 
-local window_width, window_height = love.window.getMode()
+
 local feather_image = love.graphics.newImage( "assets/Feather.png" )
 local feather_height = feather_image:getHeight()
 local feather_width = feather_image:getWidth()
