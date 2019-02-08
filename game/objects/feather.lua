@@ -29,7 +29,7 @@ end
 function feather:rotate(dt)
     if rotation < -0.2 then
         go_to_right = true
-    elseif rotation > 0.1 then 
+    elseif rotation > 0.2 then 
         go_to_right = false
     end
   
@@ -45,6 +45,12 @@ function feather:rotate(dt)
 end
 
 function feather:translate(dt)
+    if feather_x < feather_x_initial-30 then
+        go_to_right = false
+    elseif feather_x > feather_x_initial+40 then 
+        go_to_right = true
+    end 
+
     local k
     if go_to_right then k = -1 else k = 1 end
 

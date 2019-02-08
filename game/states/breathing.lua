@@ -8,12 +8,14 @@ end
 
 function breathing:update(dt)      
   feather:update(dt, true)
-  rain:update(dt)  
+  rain:update(dt)
+  box:update(dt)
 end
 
 function breathing:draw()
+  box:draw()
   feather:draw()
-  rain:draw()
+  rain:draw()  
 end
 
 

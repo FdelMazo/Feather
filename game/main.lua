@@ -6,6 +6,7 @@ local bgm = love.audio.newSource("assets/environments.mp3", "stream")
 
 feather = require("objects/feather")
 rain = require("objects/rain")
+box = require("objects/box")
 
 intro = require("states/intro")
 theo = require("states/theo")
