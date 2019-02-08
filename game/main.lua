@@ -4,6 +4,9 @@ window_width, window_height = love.window.getMode()
 font = love.graphics.newFont("assets/Pixel UniCode.ttf", 32)
 local bgm = love.audio.newSource("assets/environments.mp3", "stream")
 
+feather = require("objects/feather")
+rain = require("objects/rain")
+
 PARAMS = require("params")
 
 intro = require("states/intro")

@@ -1,4 +1,4 @@
-local theodialogue = {}
+local theo = {}
 
 local Moan = require("libs/Moan")
 
@@ -8,7 +8,7 @@ local fadeout = false
 local show_feather = false
 local current_audio = nil
 
-function theodialogue:enter()
+function theo:enter()
   love.graphics.setColor(255,255,255,255)
   love.graphics.setBackgroundColor( 0,0,0 )
   
@@ -26,7 +26,7 @@ function theodialogue:enter()
   Moan.new( {}, "Just breathe slow and steady, in and out." , { oncomplete=function() Gamestate.switch(breathing) end} )
 end
 
-function theodialogue:update(dt)
+function theo:update(dt)
   Moan.update(dt)
   if fadeout then 
     alphadown = alphadown - (dt * (255 / 4))
@@ -37,17 +37,17 @@ function theodialogue:update(dt)
   end
 end
 
-function theodialogue:draw()
+function theo:draw()
   love.graphics.setColor(154, 205, 237,alphadown)
   love.graphics.rectangle("fill", 0, 0, 10000,10000 )
 
   love.graphics.setColor( 255,255,255,alphaup)
-  love.graphics.draw(PARAMS.feather_image, PARAMS.feather_x_initial, PARAMS.feather_y_initial, 0, 1, 1, PARAMS.feather_width/2, PARAMS.feather_height/2 )
+  feather:draw()
 
   Moan.draw()
 end
 
-function theodialogue:keyreleased(key)
+function theo:keyreleased(key)
   Moan.keyreleased(key)
 end
 
@@ -59,4 +59,4 @@ function playDialogue(n)
   love.audio.play(current_audio)
 end
 
-return theodialogue
+return theo

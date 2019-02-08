@@ -1,4 +1,4 @@
-local feather = {}
+local breathing = {}
 
 local feather_x = PARAMS.feather_x_initial
 local feather_y = PARAMS.feather_y_initial 
@@ -13,7 +13,7 @@ local rotation = 0
 local velocity = 0
 local acceleration = -100
 
-function feather:enter()
+function breathing:enter()
   love.graphics.setColor(255,255,255,255)
   love.graphics.setBackgroundColor( 0,0,0 )
 
@@ -27,7 +27,7 @@ function feather:enter()
 	rain_system:setLinearAcceleration( -20, -50, 20, -100)
 end
 
-function feather:update(dt)
+function breathing:update(dt)
   feather_x = feather_x + oscilation_translation(dt,feather_x)
   rotation = rotation + oscilation_rotation(dt,rotation)
   
@@ -51,7 +51,7 @@ function feather:update(dt)
   
 end
 
-function feather:draw()
+function breathing:draw()
   love.graphics.draw(PARAMS.feather_image, feather_x, feather_y, rotation, 1, 1, PARAMS.feather_width/2, PARAMS.feather_height/2 )
   love.graphics.draw(rain_system)
 end
@@ -89,4 +89,4 @@ function oscilation_rotation(dt, rotation)
   return k*dt/seconds
 end
 
-return feather
+return breathing
