@@ -1,22 +1,16 @@
 local intro = {}
 
-local theodialogue = require("theodialogue")
-local feather = require("feather")
-
 local font_height_separation = 90
 local font_speed_separation = 80
 local alpha,alpha2,alpha3,alpha4,alpha5 = 0,0,0,0,0
-local switch = false
+local shown_all_text = false
 
 function intro:enter()
-  love.graphics.setColor(255,255,255,255)
-  love.graphics.setBackgroundColor( 0,0,0 )
-
   love.graphics.setFont(love.graphics.newFont("assets/Pixel UniCode.ttf", 32))
 end
 
 function intro:update(dt)
-    if not switch then 
+    if not shown_all_text then 
       alpha = alpha + (dt * (255 / 7))
       alpha2 = alpha - font_speed_separation
       alpha3 = alpha2 - font_speed_separation
@@ -52,13 +46,9 @@ end
 
 function intro:keyreleased(key)
   if key=='space' then
-    if switch then Gamestate.switch(theodialogue) end
+    if shown_all_text then Gamestate.switch(theodialogue_state) end
     alpha,alpha2,alpha3,alpha4,alpha5 = 255,255,255,255,255
-    switch = true    
-  end
-
-  if key=='escape' then
-    Gamestate.switch(feather)
+    shown_all_text = true    
   end
 end
 
