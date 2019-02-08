@@ -16,12 +16,14 @@ function rain:draw()
     love.graphics.draw(rain_system)
 end
 
-function rain:emit(n)
-    rain_system:emit(n)
-end
-
 function rain:update(dt)
+    if love.keyboard.isDown('space') then
+        rain_system:emit(1)
+    end
+
     rain_system:update(dt)
 end
+
+
 
 return rain

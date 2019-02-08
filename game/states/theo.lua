@@ -29,7 +29,6 @@ function theo:enter()
 end
 
 function theo:update(dt)
-  Moan.update(dt)
   if fadeout then 
     alphadown = alphadown - (dt * (255 / 4))
   end
@@ -38,25 +37,18 @@ function theo:update(dt)
     alphaup = alphaup + (dt * (255 / 10))
   end
 
-  if rotation < -0.3 then
-    go_to_right = true
-  elseif rotation > 0.35 then 
-      go_to_right = false
-  end
-  
-  rotation = rotation + feather:rotate(dt,rotation, go_to_right)
-  
+  Moan.update(dt)
+  feather:update(dt)
 end
 
 function theo:draw()
   love.graphics.setColor(154, 205, 237,alphadown)
   love.graphics.rectangle("fill", 0, 0, 10000,10000 )
 
-  love.graphics.setColor( 255,255,255,alphaup)
-  
-  feather:draw(nil,nil, rotation)
-
   Moan.draw()
+
+  love.graphics.setColor( 255,255,255,alphaup)  
+  feather:draw()
 end
 
 function theo:keyreleased(key)
