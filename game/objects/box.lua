@@ -1,10 +1,10 @@
 local box = {}
 
-local seconds_to_appear = 3
-local seconds_to_move = 5
+local seconds_to_appear = 4
+local seconds_to_move = 7
 local alpha = 0
 local v = 0
-local v_max = 70
+local v_max = 50
 
 local box_image = love.graphics.newImage( "assets/fog.png" )
 local box_width = box_image:getWidth()
@@ -12,9 +12,9 @@ local box_height = box_image:getHeight()
 
 local box_x_initial = window_width/2 - box_width/2
 local box_x = box_x_initial
-local box_y = window_height/2-box_height/2
+local box_y = window_height/2-box_height*2/3
 
-local floor = window_height-box_height-box_height
+local floor = window_height-box_height-box_height/2
 local roof = box_height/2
 
 local go_up = true
