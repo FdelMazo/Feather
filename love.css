@@ -21,8 +21,9 @@ footer {
     font-family: arial;
     font-size: 12px;
     padding-left: 10px;
-    position:absolute;
-    width: 100%;
+    bottom: 0;
+    left: 0;
+    position:fixed;
 }
 
 /* Links */
