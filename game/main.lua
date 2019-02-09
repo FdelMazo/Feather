@@ -4,7 +4,7 @@ window_width, window_height = love.window.getMode()
 font = love.graphics.newFont("assets/Pixel UniCode.ttf", 32)
 local bgm = love.audio.newSource("assets/environments.mp3", "stream")
 local bgm2 = love.audio.newSource("assets/wow_so_secret.mp3", "stream")
-local secret = true
+local secret = false
 
 feather = require("objects/feather")
 rain = require("objects/rain")
