@@ -43,7 +43,7 @@ end
 
 function theo:draw()
   love.graphics.setColor(154, 205, 237,alphadown)
-  love.graphics.rectangle("fill", 0, 0, 10000,10000 )
+  love.graphics.rectangle("fill", 0, 0, window_width,window_height)
 
   Moan.draw()
 

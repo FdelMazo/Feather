@@ -37,7 +37,7 @@ function feather:rotate(dt)
     if go_to_right then k = 1 else k = -1 end
     local seconds = 6
     
-    if love.keyboard.isDown('space') then
+    if love.keyboard.isDown('space') or love.mouse.isDown(1) then
         seconds = 10
     end
 
@@ -45,9 +45,9 @@ function feather:rotate(dt)
 end
 
 function feather:translate(dt)
-    if feather_x < feather_x_initial-30 then
+    if feather_x < feather_x_initial-40 then
         go_to_right = false
-    elseif feather_x > feather_x_initial+40 then 
+    elseif feather_x > feather_x_initial+30 then 
         go_to_right = true
     end 
 
@@ -58,7 +58,7 @@ function feather:translate(dt)
 end
 
 function feather:ascend(dt)
-    if love.keyboard.isDown('space') then
+    if love.keyboard.isDown('space') or love.mouse.isDown(1) then
         velocity = velocity - 5
     end
     

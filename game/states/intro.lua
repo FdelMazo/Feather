@@ -23,7 +23,7 @@ function intro:draw()
     local height = 100
 
     love.graphics.setColor(154, 205, 237,alpha5)
-    love.graphics.rectangle("fill", 0, 0, 10000,10000 )
+    love.graphics.rectangle("fill", 0, 0, window_width,window_height)
 
     love.graphics.setColor(255,255,255, alpha)
     love.graphics.print("Feather", 100, height)    

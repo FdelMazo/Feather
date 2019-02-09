@@ -24,6 +24,12 @@ function love.load()
   Gamestate.switch(intro) 
 end
 
+function love.mousepressed(x, y, button, istouch)
+  if button == 1 then
+    love.keyreleased('space')
+  end
+end
+
 function love.update(dt)
   if bgm:isStopped() and secret then love.audio.play(bgm2) ; secret = false end
 end

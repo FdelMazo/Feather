@@ -17,7 +17,7 @@ function rain:draw()
 end
 
 function rain:update(dt)
-    if love.keyboard.isDown('space') then
+    if love.keyboard.isDown('space') or love.mouse.isDown(1) then
         rain_system:emit(1)
     end
 
