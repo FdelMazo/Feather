@@ -36,12 +36,12 @@ function intro:draw()
     height = height + font_height_separation
 
     love.graphics.setColor(255,255,255,alpha3)
-    love.graphics.print("Best played with sound (but can be turned off with m)", 100, height)
+    love.graphics.print("Sound can be turned on with M", 100, height)
 
     height = height + font_height_separation
 
     love.graphics.setColor(255,255,255,alpha4)
-    love.graphics.print("Press Spacebar to Continue", 100, height)
+    love.graphics.print("Press Spacebar or Left click to Continue", 100, height)
 end
 
 function intro:keyreleased(key)

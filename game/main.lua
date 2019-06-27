@@ -3,8 +3,6 @@ Gamestate = require("libs/gamestate")
 window_width, window_height = love.window.getMode()
 font = love.graphics.newFont("assets/Pixel UniCode.ttf", 32)
 local bgm = love.audio.newSource("assets/environments.mp3", "stream")
-local bgm2 = love.audio.newSource("assets/wow_so_secret.mp3", "stream")
-local secret = false
 
 feather = require("objects/feather")
 rain = require("objects/rain")
@@ -19,7 +17,6 @@ function love.load()
   love.graphics.setColor(255,255,255,255)
   love.graphics.setBackgroundColor( 0,0,0 )
 
-  love.audio.play(bgm)
   Gamestate.registerEvents()
   Gamestate.switch(intro) 
 end
@@ -28,10 +25,6 @@ function love.mousepressed(x, y, button, istouch)
   if button == 1 then
     love.keyreleased('space')
   end
-end
-
-function love.update(dt)
-  if bgm:isStopped() and secret then love.audio.play(bgm2) ; secret = false end
 end
 
 function love.keyreleased(key)
