@@ -1,30 +1,12 @@
-# Feather
-:mountain: Mini Löve game (also playable on a web browser) to deal with anxiety and panic attacks, inspired by Celeste :mountain:
+# [Feather](https://fdelmazo.github.io/Feather/)
+:mountain: Mini game about dealing with anxiety and panic attacks
 
-## Releases
+---
 
-On the web: https://fdelmazo.github.io/celeste-feather-game/
+Feather is a mini game inspired by [Celeste.](http://www.celestegame.com/) It's purpose is to visualize the [floating feather meditation technique](http://davidvago.bwh.harvard.edu/the-floating-feather-meditation-technique/), a technique designed to relax and reduce anxiety.
 
-Windows: Download the executable from [here](https://github.com/fdelmazo/celeste-feather-game/releases)
+The idea of this technique is really simple: you close your eyes and imagine a feather in front of you. When you inhale, the feather rises a few inches, when you exhale, it descends. Keeping a simple count of four for the inhalation, two for a pause and four for the exhalation, you will get into a rythm that will help you when you have trouble breathing, or in the middle of a panic attack.
 
-Linux: Install the 0.10.1 version of [Löve](http://love2d.org/), download the `.love` file from [here](https://github.com/fdelmazo/celeste-feather-game/releases) and then run `love Feather.love`
+The game helps you visualize the feather. Whenever you press the spacebar, the feather rises, when you release it, it will descend. Just keep the feather inside the white box and breathe while you play.
 
-### Web game
-
-To deploy to the web, you need to add the submodules of the repo:
-
-```shell
-$ git clone https://github.com/FdelMazo/celeste-feather-game.git
-$ git clone https://github.com/TannerRogalsky/love.js.git love.js-clean
-$ mv love.js-clean lovejs
-$ cd lovejs
-$ git submodule update --init --recursive  
-```
-
-Then, just deploy with `make web`
-
-### Windows
-
-To create a windows executable, on Linux, you need the zipped version of Löve, downloadable [here](https://bitbucket.org/rude/love/downloads/love-0.10.1-win32.zip).
-
-Then, just create it with `make windows`
+The game is developed in Löve 0.10.1 (written in Lua), and the binary files for offline play can be found in the releases section of this repo.
