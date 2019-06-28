@@ -12,6 +12,7 @@ intro = require("states/intro")
 theo = require("states/theo")
 breathing = require("states/breathing")
 
+muted = true
 
 function love.load()
   love.graphics.setColor(255,255,255,255)
@@ -29,6 +30,7 @@ end
 
 function love.keyreleased(key)
   if key=='m' then
+    muted = not muted
     if bgm:isPlaying() then love.audio.pause( bgm )
     else love.audio.play(bgm)
     end

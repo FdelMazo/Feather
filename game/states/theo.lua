@@ -56,6 +56,7 @@ function theo:keyreleased(key)
 end
 
 function playDialogue(n)
+  if muted then return end
   if current_audio then
      love.audio.stop(current_audio)
   end
