@@ -36,8 +36,8 @@ function feather:rotate(dt)
     local k
     if go_to_right then k = 1 else k = -1 end
     local seconds = 6
-    
-    if love.keyboard.isDown('space') or love.mouse.isDown(1) then
+
+    if love.keyboard.isDown('space') or love.mouse.isDown(1) or #love.touch.getTouches() > 0 then
         seconds = 10
     end
 
@@ -58,7 +58,7 @@ function feather:translate(dt)
 end
 
 function feather:ascend(dt)
-    if love.keyboard.isDown('space') or love.mouse.isDown(1) then
+    if love.keyboard.isDown('space') or love.mouse.isDown(1) or #love.touch.getTouches() > 0 then
         velocity = velocity - 5
     end
     

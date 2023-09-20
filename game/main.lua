@@ -28,6 +28,10 @@ function love.mousepressed(x, y, button, istouch)
   end
 end
 
+function love.touchpressed()
+  love.keyreleased('space')
+end
+
 function love.keyreleased(key)
   if key=='m' then
     muted = not muted
