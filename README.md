@@ -5,7 +5,9 @@
 
 Feather is a mini game inspired by [Celeste.](http://www.celestegame.com/) It's purpose is to visualize the [floating feather meditation technique](http://davidvago.bwh.harvard.edu/the-floating-feather-meditation-technique/), a technique designed to relax and reduce anxiety.
 
-<a href='https://i.imgur.com/60KzgrU.gif'><img src='https://i.imgur.com/60KzgrUh.gif'></a>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/36f8b244-a50c-4bad-bb0a-201cfce42e55" />
+</p>
 
 The idea of this technique is really simple: you close your eyes and imagine a feather in front of you. When you inhale, the feather rises a few inches, when you exhale, it descends. Keeping a simple count of four for the inhalation, two for a pause and four for the exhalation, you will get into a rythm that will help you when you have trouble breathing, or in the middle of a panic attack.
 
